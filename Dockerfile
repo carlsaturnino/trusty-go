@@ -2,10 +2,10 @@
 FROM ubuntu:14.04
 MAINTAINER Carl Saturnino <cosaturn@gmail.com>
 
-RUN apt-get update -q
+RUN apt-get update -y
 
 # Install git
-RUN apt-get install -qy build-essential curl git mercurial bzr
+RUN apt-get install -q -y --no-install-recommends build-essential curl git mercurial bzr
 RUN curl -k -O https://storage.googleapis.com/golang/go1.2.2.linux-amd64.tar.gz
 RUN tar -xzf go1.2.2.linux-amd64.tar.gz -C /usr/local/
 RUN rm go1.2.2.linux-amd64.tar.gz
@@ -18,4 +18,10 @@ RUN go get -v github.com/kr/godep
 # Coverage
 RUN go get -v github.com/axw/gocov/gocov
 RUN go get -v github.com/joshuarubin/goveralls
+
+#Removed unnecessary packages
+RUN apt-get autoremove -y
+
+# Clear package repository cache
+RUN apt-get clean all
 
