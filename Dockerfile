@@ -13,7 +13,7 @@ ENV PATH /usr/local/go/bin:/go/bin:$PATH
 ENV GOPATH /go
 
 # we're using godep to save / restore dependancies
-RUN go get -v github.com/kr/godep
+RUN go get -v github.com/tools/godep
 
 # Coverage
 RUN go get -v github.com/axw/gocov/gocov
