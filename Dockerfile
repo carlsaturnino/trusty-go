@@ -5,13 +5,13 @@ MAINTAINER Carl Saturnino <cosaturn@gmail.com>
 RUN apt-get update -y
 
 # Env
-ENV GO_VERSION 1.3.0
+ENV GO_VERSION go1.2.2
 
 # Install git
 RUN apt-get install -q -y build-essential curl git mercurial bzr
-RUN curl -k -O https://storage.googleapis.com/golang/go$GO_VERSION.linux-amd64.tar.gz
-RUN tar -xzf go$GO_VERSION.linux-amd64.tar.gz -C /usr/local/
-RUN rm go$GO_VERSION.linux-amd64.tar.gz
+RUN curl -k -O https://storage.googleapis.com/golang/$GO_VERSION.linux-amd64.tar.gz
+RUN tar -xzf $GO_VERSION.linux-amd64.tar.gz -C /usr/local/
+RUN rm $GO_VERSION.linux-amd64.tar.gz
 ENV PATH /usr/local/go/bin:/go/bin:$PATH
 ENV GOPATH /go
 
